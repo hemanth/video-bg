@@ -1,0 +1,30 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<!--
+
+Set a video as your HTML background.
+
+##### Example
+    <video-bg src="http://is.gd/ZGoiBg" muted="muted"></video-bg>
+
+    @element video-bg
+    Set a video as your HTML background.
+    @src video src
+    @muted muted or ""
+    @status stable
+    @homepage http://github.com/hemanth/video-bg
+-->
+<polymer-element name="video-bg" attributes="poster src muted">
+
+    <template>
+        <link href="bgvideo.css" rel="stylesheet" />
+        <video autoplay loop muted={{muted}} id="bgvid">
+          <!-- TODO support multiple sources and types -->
+          <source src={{src}}>
+        </video>
+    </template>
+
+    <script>
+        Polymer('video-bg', {});
+    </script>
+
+</polymer-element>
