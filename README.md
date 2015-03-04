@@ -31,19 +31,17 @@ Or [download as ZIP](https://github.com/hemanth/video-bg/archive/master.zip).
 3. Start using it!
 
     ```html
-    <video-bg src="http://is.gd/ZGoiBg" muted="muted"></video-bg>
+    <video-bg srcs=["video.mp4","video.ogg", "video.webm"] muted="muted"></video-bg>
     ```
 
 ## Options
 
 Attribute  | Options                   | Default             | Description
 ---        | ---                       | ---                 | ---
-`src`      | *string*                  | ``                  | Video URL.
+`srcs`     | *array*                   | ``                  | Array of fallback video URLs.
 `muted`    | *string*                  | ``                  | "muted" or ""
 
 
 ## TODO
-
-* Support multiple video srcs.
 
 * Support few other attributes.

@@ -4,7 +4,7 @@
 Set a video as your HTML background.
 
 ##### Example
-    <video-bg src="http://is.gd/ZGoiBg" muted="muted"></video-bg>
+    <video-bg srcs='["video.mp4","video.ogv", "video.webm"]' muted="muted"></video-bg>
 
     @element video-bg
     Set a video as your HTML background.
@@ -13,18 +13,24 @@ Set a video as your HTML background.
     @status stable
     @homepage http://github.com/hemanth/video-bg
 -->
-<polymer-element name="video-bg" attributes="poster src muted">
+<polymer-element name="video-bg" attributes="poster srcs muted">
 
     <template>
-        <link href="bgvideo.css" rel="stylesheet" />
+        <link href="bgvideo.css" rel="stylesheet"/>
         <video autoplay loop muted={{muted}} id="bgvid">
-          <!-- TODO support multiple sources and types -->
-          <source src={{src}}>
+          <template repeat="{{src in srcs}}">
+            <source src={{src}} type="{{src|getType}}">
+          </template>
         </video>
     </template>
 
     <script>
-        Polymer('video-bg', {});
+        Polymer('video-bg', {
+          created: function() {this.srcs=[];},
+          getType: function(src){
+            return 'video/'+src.substr(src.lastIndexOf('.') + 1)
+          }
+        });
     </script>
 
 </polymer-element>
